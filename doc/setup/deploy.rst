@@ -165,6 +165,18 @@ in ``/etc/odoo.conf`` set:
   db_password = pwd
   dbfilter = ^mycompany.*$
 
+.. _postgresql_ssl_connect:
+
+SSL Between Odoo and PostgreSQL
+-------------------------------
+
+Since Odoo 11.0, you can enforce ssl connection between Odoo and PostgreSQL.
+in Odoo the db_sslmode control the ssl security of the connection 
+with value choosed out of 'disable', 'allow', 'prefer', 'require', 'verify-ca'
+or 'verify-full'
+
+`PostgreSQL Doc <https://www.postgresql.org/docs/current/static/libpq-ssl.html>`_
+
 .. _builtin_server:
 
 Builtin server
@@ -213,6 +225,13 @@ the client will not connect to it.
 Instead you must have a proxy redirecting requests whose URL starts with
 ``/longpolling/`` to the longpolling port. Other request should be proxied to
 the :option:`normal HTTP port <odoo-bin --http-port>`
+
+To achieve such a thing, you'll need to deploy a reverse proxy in front of Odoo,
+like nginx or apache. When doing so, you'll need to forward some more http Headers
+to Odoo, and activate the proxy_mode in Odoo configuration to have Odoo read those
+headers.
+
+
 
 Configuration sample
 --------------------
@@ -316,16 +335,18 @@ in ``/etc/nginx/sites-enabled/odoo.conf`` set:
    # log
    access_log /var/log/nginx/odoo.access.log;
    error_log /var/log/nginx/odoo.error.log;
-   
+
+   # Redirect longpoll requests to odoo longpolling port
+   location /longpolling {
+   proxy_pass http://odoochat;
+   }
+
    # Redirect requests to odoo backend server
    location / {
      proxy_redirect off;
      proxy_pass http://odoo;
    }
-   location /longpolling {
-       proxy_pass http://odoochat;
-   }
- 
+
    # common gzip
    gzip_types text/css text/less text/plain text/xml application/xml application/json application/javascript;
    gzip on;
@@ -421,6 +442,10 @@ security-related topics:
   only for controlling/managing the installation.
   *Never* use any default passwords like admin/admin, even for test/staging databases.
 
+- Do **not** install demo data on internet-facing servers. Databases with demo data contain
+  default logins and passwords that can be used to get into your systems and cause significant
+  trouble, even on staging/dev systems.
+
 - Use appropriate database filters ( :option:`--db-filter <odoo-bin --db-filter>`)
   to restrict the visibility of your databases according to the hostname.
   See :ref:`db_filter`.
@@ -452,6 +477,12 @@ security-related topics:
   Configure the web proxy to limit the size of requests, set appropriate timeouts,
   and then enable the :option:`proxy mode <odoo-bin --proxy-mode>` option.
   See also :ref:`https_proxy`.
+
+- If you need to allow remote SSH access to your servers, make sure to set a strong password
+  for **all** accounts, not just `root`. It is strongly recommended to entirely disable
+  password-based authentication, and only allow public key authentication. Also consider
+  restricting access via a VPN, allowing only trusted IPs in the firewall, and/or
+  running a brute-force detection system such as `fail2ban` or equivalent.
 
 - Whenever possible, host your public-facing demo/test/staging instances on different
   machines than the production ones. And apply the same security precautions as for
@@ -503,10 +534,14 @@ Supported Browsers
 Odoo is supported by multiple browsers for each of its versions. No 
 distinction is made according to the browser version in order to be
 up-to-date. Odoo is supported on the current browser version. The list 
-of the supported browsers by Odoo version is the following:
+of the supported browsers is the following:
 
-- **Odoo 9:** IE11, Mozilla Firefox, Google Chrome, Safari, Microsoft Edge
-- **Odoo 10+:** Mozilla Firefox, Google Chrome, Safari, Microsoft Edge
+- IE11,
+- Mozilla Firefox,
+- Google Chrome,
+- Safari,
+- Microsoft Edge
+
 
 .. [#different-machines]
     to have multiple Odoo installations use the same PostgreSQL database,
@@ -532,8 +567,8 @@ of the supported browsers by Odoo version is the following:
 .. _socat: http://www.dest-unreach.org/socat/
 .. _PostgreSQL connection settings:
 .. _listen to network interfaces:
-    http://www.postgresql.org/docs/9.3/static/runtime-config-connection.html
+    http://www.postgresql.org/docs/9.6/static/runtime-config-connection.html
 .. _use an SSH tunnel:
-    http://www.postgresql.org/docs/9.3/static/ssh-tunnels.html
+    http://www.postgresql.org/docs/9.6/static/ssh-tunnels.html
 .. _WSGI: http://wsgi.readthedocs.org/
 .. _POSBox: https://www.odoo.com/page/point-of-sale-hardware#part_2

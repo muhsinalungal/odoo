@@ -73,7 +73,6 @@ var KanbanModel = BasicModel.extend({
                     domain: parent.domain.concat([[groupBy,"=",result[0]]]),
                     fields: parent.fields,
                     fieldsInfo: parent.fieldsInfo,
-                    groupedBy: parent.groupedBy,
                     isOpen: true,
                     limit: parent.limit,
                     parentID: parent.id,
@@ -349,9 +348,8 @@ var KanbanModel = BasicModel.extend({
         return $.when();
     },
     /**
-     * Reloads all progressbar data if the given id is a record's one. This is
-     * done after given deferred and insures that the given deferred's result is
-     * not lost.
+     * Reloads all progressbar data. This is done after given deferred and
+     * insures that the given deferred's result is not lost.
      *
      * @private
      * @param {string} recordID
@@ -360,7 +358,9 @@ var KanbanModel = BasicModel.extend({
      */
     _reloadProgressBarGroupFromRecord: function (recordID, def) {
         var element = this.localData[recordID];
-        if (element.type !== 'record') {
+        if (element.type === 'list' && !element.parentID) {
+            // we are reloading the whole view, so there is no need to manually
+            // reload the progressbars
             return def;
         }
 
@@ -370,7 +370,10 @@ var KanbanModel = BasicModel.extend({
         while (element) {
             if (element.progressBar) {
                 return def.then(function (data) {
-                    return self._load(element, {onlyGroups: true}).then(function () {
+                    return self._load(element, {
+                        keepEmptyGroups: true,
+                        onlyGroups: true,
+                    }).then(function () {
                         return data;
                     });
                 });

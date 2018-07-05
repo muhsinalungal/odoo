@@ -3,7 +3,7 @@
 # * website
 # 
 # Translators:
-# Martin Trigaux <mat@odoo.com>, 2017
+# Martin Trigaux, 2017
 # fanha99 <fanha99@hotmail.com>, 2017
 # file aio <fileaio@gmail.com>, 2017
 # Phạm Lân <phamquanglan@gmail.com>, 2017
@@ -17,13 +17,14 @@
 # Thang Duong Bao <nothingctrl@gmail.com>, 2017
 # Philips Nguyen <vmbc.inc@gmail.com>, 2017
 # Duc Dao <blakice12@gmail.com>, 2017
+# Duy BQ <duybq86@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-30 13:11+0000\n"
-"PO-Revision-Date: 2017-11-30 13:11+0000\n"
-"Last-Translator: Duc Dao <blakice12@gmail.com>, 2017\n"
+"POT-Creation-Date: 2018-02-19 13:42+0000\n"
+"PO-Revision-Date: 2018-02-19 13:42+0000\n"
+"Last-Translator: Duy BQ <duybq86@gmail.com>, 2018\n"
 "Language-Team: Vietnamese (https://www.transifex.com/odoo/teams/41243/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1728,6 +1729,11 @@ msgid "Feature Two"
 msgstr ""
 
 #. module: website
+#: model:ir.model,name:website.model_ir_model_fields
+msgid "Fields"
+msgstr "Trường"
+
+#. module: website
 #: model:ir.ui.view,arch_db:website.website_planner
 msgid ""
 "Finally don't try to make all your content accessible from the main menu or the footer.\n"
@@ -1976,7 +1982,7 @@ msgstr ""
 #. module: website
 #: model:ir.ui.view,arch_db:website.snippet_options
 msgid "Grid"
-msgstr ""
+msgstr "Khung lưới"
 
 #. module: website
 #: model:ir.ui.view,arch_db:website.menu_search
@@ -2193,6 +2199,7 @@ msgid ""
 msgstr ""
 
 #. module: website
+#: model:ir.model.fields,field_description:website.field_website_menu_is_visible
 #: model:ir.model.fields,field_description:website.field_website_page_is_visible
 msgid "Is Visible"
 msgstr ""
@@ -2506,6 +2513,11 @@ msgstr "Mô hình"
 #: model:ir.model.fields,field_description:website.field_website_page_model_data_id
 msgid "Model Data"
 msgstr "Model Data"
+
+#. module: website
+#: model:ir.model,name:website.model_ir_model
+msgid "Models"
+msgstr "Models"
 
 #. module: website
 #. openerp-web
@@ -4500,7 +4512,7 @@ msgstr ""
 #. module: website
 #: model:ir.model,name:website.model_res_config_settings
 msgid "res.config.settings"
-msgstr ""
+msgstr "res.config.settings"
 
 #. module: website
 #: model:ir.ui.view,arch_db:website.website_planner

@@ -23,7 +23,7 @@ msgstr ""
 #. module: sale_margin
 #: model:ir.model.fields,field_description:sale_margin.field_sale_order_line_purchase_price
 msgid "Cost"
-msgstr "Maksumus"
+msgstr "Omahind"
 
 #. module: sale_margin
 #: model:ir.model.fields,help:sale_margin.field_sale_order_margin
@@ -47,7 +47,7 @@ msgstr "Pakkumine"
 #. module: sale_margin
 #: model:ir.model,name:sale_margin.model_sale_order_line
 msgid "Sales Order Line"
-msgstr "Müügikorralduse rida"
+msgstr "Müügitellimuse rida"
 
 #. module: sale_margin
 #: model:ir.model,name:sale_margin.model_sale_report

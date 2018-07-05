@@ -6,8 +6,9 @@
 # Martin Trigaux, 2017
 # Egon Raamat <egon@avalah.ee>, 2017
 # Arma Gedonsky <armagedonsky@hot.ee>, 2017
-# Wanradt Koell <wanradt@gmail.com>, 2017
+# Marek Pontus, 2017
 # Eneli Õigus <enelioigus@gmail.com>, 2017
+# Wanradt Koell <wanradt@gmail.com>, 2017
 # Rivo Zängov <eraser@eraser.ee>, 2017
 msgid ""
 msgstr ""
@@ -48,7 +49,7 @@ msgstr "Konto number"
 #. module: account_bank_statement_import
 #: model:ir.model.fields,field_description:account_bank_statement_import.field_account_bank_statement_import_journal_creation_type_control_ids
 msgid "Account Types Allowed"
-msgstr "Lubatud kontotüübid"
+msgstr "Lubatud kontoliigid"
 
 #. module: account_bank_statement_import
 #: model:ir.model.fields,field_description:account_bank_statement_import.field_account_bank_statement_import_journal_creation_account_control_ids
@@ -96,7 +97,7 @@ msgstr "Pangakonto"
 #. module: account_bank_statement_import
 #: model:ir.model.fields,field_description:account_bank_statement_import.field_account_bank_statement_import_journal_creation_bank_statements_source
 msgid "Bank Feeds"
-msgstr "Pangakanalid"
+msgstr "Pangaväljavõtted"
 
 #. module: account_bank_statement_import
 #: model:ir.ui.view,arch_db:account_bank_statement_import.account_bank_statement_import_journal_creation_view
@@ -197,7 +198,7 @@ msgstr "Loonud"
 #: model:ir.model.fields,field_description:account_bank_statement_import.field_account_bank_statement_import_create_date
 #: model:ir.model.fields,field_description:account_bank_statement_import.field_account_bank_statement_import_journal_creation_create_date
 msgid "Created on"
-msgstr "Loodud"
+msgstr "Loomise kuupäev"
 
 #. module: account_bank_statement_import
 #: model:ir.model.fields,field_description:account_bank_statement_import.field_account_bank_statement_import_journal_creation_refund_sequence_id
@@ -267,7 +268,7 @@ msgstr "Hankige pangaväljavõtted elektroonilises vormis ja valige need siin."
 #. module: account_bank_statement_import
 #: model:ir.model.fields,field_description:account_bank_statement_import.field_account_bank_statement_import_journal_creation_group_invoice_lines
 msgid "Group Invoice Lines"
-msgstr "Grupeeri müügiarve read"
+msgstr "Grupeeri arve read"
 
 #. module: account_bank_statement_import
 #: model:ir.model.fields,field_description:account_bank_statement_import.field_account_bank_statement_import_id
@@ -467,7 +468,7 @@ msgstr "Lühikood"
 #. module: account_bank_statement_import
 #: model:ir.model.fields,field_description:account_bank_statement_import.field_account_bank_statement_import_journal_creation_show_on_dashboard
 msgid "Show journal on dashboard"
-msgstr "Näita andmiku töölaual"
+msgstr "Näita andmikku töölaual"
 
 #. module: account_bank_statement_import
 #: model:ir.model.fields,help:account_bank_statement_import.field_account_bank_statement_import_journal_creation_account_setup_bank_data_done
